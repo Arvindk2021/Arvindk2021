@@ -72,22 +72,10 @@ namespace PaymentsAPIClient.Controllers
 
             //Base64 encoded url. Also replace / with $ and = with ~
             var base64Encoded = Convert.ToBase64String(Encoding.UTF8.GetBytes("returnurl:" + url)).Replace("/", "$").Replace("=", "~");
-            var token = !string.IsNullOrWhiteSpace(model.JwtToken) ?model.JwtToken:"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1MjU3Njk1NTYsImV4cCI6MTU1OTk4Mzk1NiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDozNTg4Iiwic3ViIjoiaHR0cDovL2xvY2FsaG9zdDo1MDM3NiIsImlkIjoiMTAxIiwiZmlyc3RuYW1lIjoiQXJ2aW5kIiwibGFzdG5hbWUiOiJLdW1hciIsImVtYWlsIjoiYXJ2aW5kLmt1bWFyQHN0cmVhbWFtZy5jb20ifQ.nrm5MeNlSSDV9Ki1jcV5ZCl9kmdNuys3SzqJCoZzHyk";
+            var token = model.JwtToken;
             var resolvedUrl = ssoUrl + base64Encoded + "/?lang=en&token=" + token;
             //working sercret key for above token: YTNOaGJXYzRNams9
-            /* 
-             * //User this to follow Payments api registration flow
-            //var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1MjU3Njk1NTYsImV4cCI6MTU1OTk4Mzk1NiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDozNTg4Iiwic3ViIjoiaHR0cDovL2xvY2FsaG9zdDo1MDM3NiIsImlkIjoiMTAxIiwiZmlyc3RuYW1lIjoiQXJ2aW5kIiwibGFzdG5hbWUiOiJLdW1hciIsImVtYWlsIjoiYXJ2aW5kLmt1bWFyQHN0cmVhbWFtZy5jb20ifQ.nrm5MeNlSSDV9Ki1jcV5ZCl9kmdNuys3SzqJCoZzHyk";
-            //var resolvedUrl = Request.QueryString["returnurl"];
-            //resolvedUrl += $"&token={token}";
-            */
-
-            //var setCookieUrl = "http://localhost:3588/api/v1/session/setcookie/"+token;
-
             return Redirect(resolvedUrl);
-
-
-            //return View(model);
         }
 
         [HttpGet]
