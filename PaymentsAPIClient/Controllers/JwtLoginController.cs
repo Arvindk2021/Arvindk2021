@@ -35,6 +35,13 @@ namespace PaymentsAPIClient.Controllers
             return View(model);
         }
 
+        /*
+            This is the method used to integrate payments platform with most the clients. This is also the default implementation. 
+            When user tries to register, or access a video and he is not already login, he is redirected back to jwt login page which mentioned as login url in cofiguration. 
+            Payments api sends base64 encoded url which payments api use to continue with the process. 
+            cleint application has to retreieve parameter returnrul and then append jwt token and rediects back to the resolved url. 
+        */
+
         [HttpPost]
         [Route("reg/sso/login")]
         public ActionResult RegSsoLogin(SsoLoginViewModel model)
@@ -59,6 +66,16 @@ namespace PaymentsAPIClient.Controllers
             
             return View(model);
         }
+        /*
+            Though this is not the default impmlentation at present in payments api, but one client asked to use the method. 
+            The method is to log into paymentsapi using jwt without starting from registration and or from video access page. 
+            Authentication using this methods requires a return url where payments api redirects back after successful url.
+            The return url is a base64 encoded plus two characters "/" and "=" replaced with "$" and "~"
+             
+            Rest process is similar. 
+
+            The limitation here is that payments application does not return any success or fail status back to calling app, Any error message is displayed at payments api checkout page. 
+        */
 
         [HttpPost]
         [Route("sso/login")]
