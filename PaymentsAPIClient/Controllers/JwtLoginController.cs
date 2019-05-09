@@ -84,6 +84,10 @@ namespace PaymentsAPIClient.Controllers
 
             ////use this method to test a jwt login with custom return url
             //var url = Request.Url.AbsoluteUri + "?status=success";
+
+            //This rul is only for this machine, nad has to be modified as per the url at local machine. 
+            //Sorry to keep it hardcoded. 
+
             var url="http://localhost:50376/sso/login?status=success";
             var ssoUrl = "http://localhost:3588/sso/start/";
 
