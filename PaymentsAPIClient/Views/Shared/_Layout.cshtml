@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <!--HEAD:BEGIN-->
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="http://localhost:3588/_resx/js/stream-payments.js"></script>
+
+    <!--HEAD:END-->
+
+</head>
+<body>
+    <!--HEADER:BEGIN-->
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Sso Login", "SsoLogin", "JwtLogin")</li>
+                    @*<li>@Html.ActionLink("Aws Sso Login", "AwsSsologin", "AwsSsologin")</li>
+                    <li>@Html.ActionLink("fancore Sso Login", "FanCoreSsoLogin", "JwtLogin")</li>*@
+
+                    @*<li>@Html.ActionLink("Json Login", "DoLogin", "JsonLogin")</li>*@
+                    <li> <a href="/JsonLogin/DoLogin/?custid=123&custname=test">json Login</a></li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Utilities<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/jwttoken/sportsalliance">Decode SportAlliance jwt token</a></li>
+                            <li><a href="/jwttoken/standard">Decode standard jwt token</a></li>
+                        </ul>
+                    </li>
+                    @*<li>@Html.ActionLink("Video", "Index", "Video")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--HEADER:END-->
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <!--FOOTER:BEGIN-->
+            <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+        <!--FOOTER:END-->
+
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

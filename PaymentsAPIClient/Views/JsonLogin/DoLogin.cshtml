@@ -1,0 +1,154 @@
+﻿@model PaymentsAPIClient.Models.JsonLoginViewModel
+
+@{
+    ViewBag.Title = ViewBag.SiteName + " > Login";
+}
+
+<h1>@ViewBag.SiteName</h1>
+
+<h3>Please sign in</h3>
+<div id="pagemsg" class="alert" style="display:none;" role="alert">
+    @*@Html.ValidationSummary("You could not be logged in because")*@
+</div>
+
+
+<p>
+    @Html.LabelFor(m => m.EmailAddress, new { @class = "control-label" })
+    @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", @placeholder = "Username" })
+</p>
+<p>
+    @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+</p>
+<h3>Login Response</h3>
+<p id="loginresponse">
+    
+</p>
+    
+    
+<div class="row" style="margin-top:3rem;">
+    <div class="col-md-3">
+        <button id="btnlogin" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
+    </div>
+
+    <div class="col-md-3">
+        <button id="btnlogout" class="btn btn-lg btn-primary btn-block" type="button">logout</button>
+    </div>
+
+</div>
+
+<script>
+        $(document)
+            .ready(function () {
+                // Initialize the library, pass in the base url of the payments api ie https://payments.streamamg.com
+                console.log('Page loaded');
+                streamPayments.init('', 'en');
+
+                if (typeof streamPayments != "undefined") {
+                    streamPayments.init('', 'en');
+                }
+
+                $("#btnlogin").click(function () {
+                    $("#pagemsg").hide();
+                    console.log('login button clicked');
+                    var emailAddress = $("#EmailAddress").val();
+                    var pass = $("#Password").val();
+
+                    streamPayments.doLogin(
+                        {
+                            emailaddress: emailAddress,
+                            password: pass
+                        },
+                        function (data) {
+                            //console.log('call back function:');
+                            //console.log('Login returned value' + JSON.stringify(data));
+                            $("#loginresponse").html(JSON.stringify(data));
+                            $("#pagemsg").addClass("alert-success").html("Operation Successful").show();
+                            //document.getElementById("loginresponse").innerHTML = JSON.stringify(data);
+                        }
+                    );
+                });
+
+                $("#btnlogout").click(function () {
+                    $("#pagemsg").hide();
+                    console.log('login button clicked');
+                    var emailAddress = $("#EmailAddress").val();
+                    var pass = $("#Password").val();
+
+                    streamPayments.doLogout(
+                        {
+                            emailaddress: "",
+                            password: ""
+                        },
+                        function (data) {
+                            console.log('Logout call back function:');
+                            console.log('Logout returned value' + JSON.stringify(data));
+                            $("#loginresponse").html(JSON.stringify(data));
+                            $("#pagemsg").addClass("alert-success").html("Operation Successful").show();
+                            //document.getElementById("loginresponse").innerHTML = JSON.stringify(data);
+                        }
+                    );
+                });
+
+
+                ///// Grab the package listing
+                //streamPayments.getSubscriptionPackageList(
+                //    null,
+                //    function (data) {
+                //        for (i = 0; i < data.SubscriptionPlanOptions.length; i++) {
+                //            console.log("Subscription name :" + data.SubscriptionPlanOptions[i].Title);
+                //            console.log("            price :" + data.SubscriptionPlanOptions[i].AmountFormatted);
+                //            console.log("              url :" + data.SubscriptionPlanOptions[i].PurchaseUrl);
+                //        }
+                //    }
+                //);
+                /*
+                streamPayments.getSessionState(
+                    null,
+                    function (data) {
+                        console.log(data);
+                    }
+                );
+
+                streamPayments.doLogin(
+                    {
+                        emailaddress: 'free@streamamg.com',
+                        password: 'password'
+                    },
+                    function (data) {
+                        console.log(data);
+                    }
+                );
+
+                streamPayments.isEmailAddressValid(
+                    {
+                        emailaddress: 'free@streamamg.com',
+                    },
+                    function (data) {
+                        console.log(data);
+                    }
+                );
+
+                streamPayments.doContactSubmission(
+                    {
+                        name: 'Isobelle Benge',
+                        emailaddress: 'free@streamamg.com',
+                        subject: 'This is my issue',
+                        body: 'This is my message',
+                    },
+                    function (data) {
+                        console.log(data);
+                    }
+                );*/
+
+
+                //streamPayments.isVoucherCodeValid(
+                //    {
+                //        code: 'FREDDY'
+                //    },
+                //    function (data) {
+                //        console.log(data);
+                //    }
+                //);
+            });
+</script>

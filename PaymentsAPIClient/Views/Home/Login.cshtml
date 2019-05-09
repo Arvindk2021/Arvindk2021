@@ -1,0 +1,61 @@
+﻿@model PaymentsAPIClient.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<h2>Payments Client Application</h2>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            @Html.LabelFor(m => m.EmailAddress)
+            <input class="form-control" id="EmailAddress" name="EmailAddress" type="email" value="" placeholder="Email Address">
+            @Html.ValidationMessageFor(m => m.EmailAddress)
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-left">
+            <input type="submit" class="btn btn-primary" id="loginsubmit" />
+        </div>
+    </div>
+</div>
+
+
+<script>
+    streamPayments.init({
+    "jwtToken": "",
+    "language": "en"
+});
+
+$(function () {
+
+    $("#loginsubmit").click(function () {
+
+        //var jwtstarturl = "http://localhost:32567/sso/start/cmV0dXJudXJsOmh0dHA6Ly9sb2NhbGhvc3Q6MzI1NjcvYWNjb3VudA==?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1MjUxNzI2MTUsImV4cCI6MTU1OTM4NzAxNSwiYXVkIjoid3d3Lmh0dHA6Ly9sb2NhbGhvc3Q6MzI1NjciLCJzdWIiOiJhcnZpbmQua3VtYXJAc3RyZWFtYW1nLmNvbSIsImlkIjoiMTAxIiwiZmlyc3RuYW1lIjoiYXJ2aW5kIiwibGFzdG5hbWUiOiJLdW1hciIsImVtYWlsIjoiYXJ2aW5kLmt1bWFyQHN0cmVhbWFtZy5jb20ifQ.rhTTMpvXh4v5O--s8uitkRxvdfJ0wxNEUdGbprH4ob8";
+
+        var emailaddress = $("#EmailAddress").val();
+        var password = $("#Password").val();
+
+        console.log("emailaddress:"+emailaddress);
+        console.log("password:"+password);
+
+        streamPayments.dologin()
+
+        //document.location.href = jwtstarturl;
+    });
+});
+
+
+</script>

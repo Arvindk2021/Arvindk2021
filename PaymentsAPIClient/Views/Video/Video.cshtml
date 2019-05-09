@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "Video";
+
+    var jwtToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1MjU3Njk1NTYsImV4cCI6MTU1OTk4Mzk1NiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDozNTg4Iiwic3ViIjoiaHR0cDovL2xvY2FsaG9zdDo1MDM3NiIsImlkIjoiMTAxIiwiZmlyc3RuYW1lIjoiQXJ2aW5kIiwibGFzdG5hbWUiOiJLdW1hciIsImVtYWlsIjoiYXJ2aW5kLmt1bWFyQHN0cmVhbWFtZy5jb20ifQ.nrm5MeNlSSDV9Ki1jcV5ZCl9kmdNuys3SzqJCoZzHyk";
+
+}
+
+<h2>Video</h2>
+<label>EntryId:0_ukdklata</label>
+
+@*<script src="http://open.http.mp.streamamg.com/p/3000759/sp/300075900/embedIframeJs/uiconf_id/30004318/partner_id/3000759"></script>
+<div id="kaltura_player_1525788415" style="width: 400px; height: 261px;" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+    <span itemprop="name" content="Charlton Goal Montage"></span>
+    <span itemprop="description" content="Test"></span>
+    <span itemprop="duration" content="222"></span>
+    <span itemprop="thumbnail" content="http://open.http.mp.streamamg.com/p/3000759/sp/300075900/thumbnail/entry_id/0_ukdklata/version/100002/acv/192"></span>
+    <span itemprop="width" content="400"></span>
+    <span itemprop="height" content="261"></span>
+</div>
+<script>
+
+    kWidget.embed({
+      "targetId": "kaltura_player_1525788415",
+      "wid": "_3000759",
+      "uiconf_id": 30004318,
+      "flashvars": {
+        "streamerType": "hds"
+      },
+      "cache_st": 1525788415,
+      "entry_id": "0_ukdklata"
+    });
+
+</script>*@
+
+
+
+@*<div id="kaltura_player_1525790530" style="width: 400px; height: 261px;" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+    <span itemprop="name" content="Charlton Goal Montage"></span>
+    <span itemprop="description" content="Test"></span>
+    <span itemprop="duration" content="222"></span>
+    <span itemprop="thumbnail" content="http://open.http.mp.streamamg.com/p/3000759/sp/300075900/thumbnail/entry_id/0_ukdklata/version/100002/acv/192"></span>
+    <span itemprop="width" content="400"></span>
+    <span itemprop="height" content="261"></span>
+</div>
+<script src="http://open.http.mp.streamamg.com/p/3000759/sp/300075900/embedIframeJs/uiconf_id/30004318/partner_id/3000759?autoembed=true&entry_id=0_ukdklata&playerId=kaltura_player_1525790530&cache_st=1525790530&width=400&height=261&flashvars[streamerType]=hds"></script>*@
+
+
+<script src="~/Scripts/CustAuth.js"></script>
+
+
+
+<div id="post-container" class="player lang_en">
+    <script src="http://open.http.mp.streamamg.com/p/3000759/sp/300075900/embedIframeJs/uiconf_id/30004318/partner_id/3000759"></script>
+    <a id="kaltura_player_9da04b81882e0fe3a64cd1e701765fbb_wrapper" class="kWidgetIframeContainer-wrapper" 
+       style="height:351px" data-entryid="0_ukdklata" data-wid="_3000651" data-uiconfid="30023361" href="#">
+        <div id="kaltura_player_9da04b81882e0fe3a64cd1e701765fbb" class="player-thumbnail" style="float:;;">
+            <img src="http://open.http.mp.streamamg.com/p/3000759/sp/300075900/thumbnail/entry_id/0_mpd6eutg/width/940/height/529" 
+                 style="max-width: 100% !important;" alt="Click here to watch the video">
+        </div>
+    </a>
+
+    <script>
+
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            $(window).load(function () {
+                console.log('jwt token:' + '@jwtToken');
+                streamPayments.init({
+                    "jwtToken": '@jwtToken',
+                    "language": "en"
+                });
+
+                $("#kaltura_player_9da04b81882e0fe3a64cd1e701765fbb").trigger("click");
+            });
+        }
+
+        jQuery("#kaltura_player_9da04b81882e0fe3a64cd1e701765fbb").click(function () {
+            console.log("Video clicked")
+            SAMG.customerAuth.playMedia($(this));
+            return false;
+        });
+    </script>
+</div>

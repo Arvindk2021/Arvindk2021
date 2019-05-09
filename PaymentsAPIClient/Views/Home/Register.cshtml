@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    var jwtToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1MjU3Njk1NTYsImV4cCI6MTU1OTk4Mzk1NiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDozNTg4Iiwic3ViIjoiaHR0cDovL2xvY2FsaG9zdDo1MDM3NiIsImlkIjoiMTAxIiwiZmlyc3RuYW1lIjoiQXJ2aW5kIiwibGFzdG5hbWUiOiJLdW1hciIsImVtYWlsIjoiYXJ2aW5kLmt1bWFyQHN0cmVhbWFtZy5jb20ifQ.nrm5MeNlSSDV9Ki1jcV5ZCl9kmdNuys3SzqJCoZzHyk";
+    var awsJwtToken = "eyJraWQiOiJlREN5U3RUem9yOWkyM0YrRTFURjFMbWN4ZTl3OE5WWnhoRStuN1VEUTBZPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIwZDhiODM0Mi03NzFhLTRmYmItYTU2My1mODkzNGQxMTg2ODciLCJjdXN0b206cGFydG5lcl9zbXMiOiJ0cnVlIiwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLmV1LXdlc3QtMS5hbWF6b25hd3MuY29tXC9ldS13ZXN0LTFfWTV0blZlOUdsIiwiY3VzdG9tOmNsdWJfc21zIjoidHJ1ZSIsImF1dGhfdGltZSI6MTU1MTA5ODYzMCwiY3VzdG9tOnBhcnRuZXJfZW1haWwiOiJ0cnVlIiwiZXhwIjoxNTUxMTAyMjMwLCJpYXQiOjE1NTEwOTg2MzAsImVtYWlsIjoibUBydGluZC51ayIsImN1c3RvbTpwYXJ0bmVyX2RpcmVjdCI6InRydWUiLCJjdXN0b206Y2x1Yl9kaXJlY3QiOiJ0cnVlIiwiY3VzdG9tOmNsdWJfZW1haWwiOiJ0cnVlIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImN1c3RvbTpwYXJ0bmVyX2NvbnRhY3QiOiJ0cnVlIiwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwiY29nbml0bzp1c2VybmFtZSI6IjBkOGI4MzQyLTc3MWEtNGZiYi1hNTYzLWY4OTM0ZDExODY4NyIsImdpdmVuX25hbWUiOiJNYXJ0aW4iLCJwaWN0dXJlIjoiaHR0cHM6XC9cL3Nzby1pbWFnZXMuczMuZXUtd2VzdC0xLmFtYXpvbmF3cy5jb21cL2V1LXdlc3QtMSUzQTA5MGM0NGZjLTI4N2EtNDI4NC1iZGNjLTg3Y2QzODk4NGVmZlwvWmxLa0VpeDByTUxGLmpwZWciLCJjdXN0b206cGFydG5lcl9waG9uZSI6InRydWUiLCJjdXN0b206Y2x1Yl9jb250YWN0IjoidHJ1ZSIsImF1ZCI6IjI2ZzBma2ViaHZiaDNrdHYzZ2Q1OXZjbmY3IiwiZXZlbnRfaWQiOiIwMDUxMzc4Yi0zOGZiLTExZTktOTg0Yi05YjU1YWU1MzEyYTkiLCJ0b2tlbl91c2UiOiJpZCIsImN1c3RvbTpjbHViX3Bob25lIjoidHJ1ZSIsInBob25lX251bWJlciI6Iis0NDA3ODEzODUzMDUyIiwiZmFtaWx5X25hbWUiOiJEdW5mb3JkIn0.NXLFigeMM5PkWZ4b56pxVpfE7Id4QU6ANwHjvgG5DhJsloKWvtHHkdv0hpH0b9KZDcPwf0CR5zGByoQ8ao5ovdu8fx2GX4P - Va0jgKWbzeFQ5URLtnS2kZyp2D84yFyR2VEbV7uYreMoj7lQEzwHQK_FdVECMlQub5rPNlDJrCHG0JU2V58FlSvEh_hFIBwTMOB8XMftwW4TQYP_GWhxrt_lOEjkK - aL4vuywXSQwm - MVebKexZ - T3jnk_RjtwN34BZ8xuapCJpV1xXDYRmm0t6clHOl2oR5apobey - DHYuwqn - y_AjLKBpMEA7oDZz8OQJ9MxosDcU05ymnq70p3A";
+    var jwtTokenFancore = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE4MzQ3Miwic2NvcGUiOlsib3Blbl9pZCIsInByb2ZpbGUiXSwiaXNzIjoiSW5Dcm93ZCIsImxhc3RfbmFtZSI6IkdvcnRvbiIsImV4cCI6MTU0MzY2MzgyMiwiZmlyc3RfbmFtZSI6IkNoYXJsaWUiLCJhdXRob3JpdGllcyI6WyJST0xFX1ZFUklGSUVEXyoiLCJST0xFX1VTRVJfKiIsIlJPTEVfUFJPRklMRUNPTVBMRVRFXyoiXSwianRpIjoiZDA0MTcyZWUtNTkxOS00ZGRiLTgyYzgtNWUzZDBhNmNjYTQ2IiwiY2xpZW50X2lkIjoiUFJPMTQiLCJlbWFpbCI6ImNoYXJsaWUuZ29ydG9uKzJAaW5jcm93ZHNwb3J0cy5jb20ifQ.eRP5mGg8sFVksakYwMVvzLmHie_4eVmcBDdOK3rUCBAw6DfiWhIVT3yGXJxIhV-dCBZU_mW7_U2cQrZC8YYvpxEfIbkggOIOYsjiShyrU9VW46a7qDfJGvp5ZSIQckNd_6oF8iQnRZ6u_abq5kQFputbBkKHUUwRK7afhodxRdnkt1BTHD9IuLtLArpHHAwlDupOk234ODeu7daR4CY6Cn7dlbxmbjIRpVYvs-pzhxT_aVEJ-mOGHMJAOIlZkY7P_-sRXTqkTxhRg_PDW5lBTNokIgjdl1vSELlVEJq2YTZ0A3RGwZeSZkhgii7xk_N-nedP5UzxMGorMyApSv4vxg";
+    var jwtToken1 = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1Mjg5NjkyNzMsImV4cCI6MTU2MDUwNTI3MywiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDozNTg4Iiwic3ViIjoid3d3Lmh0dHA6Ly9sb2NhbGhvc3Q6MzI1NjciLCJGaXJzdE5hbWUiOiJBcnZpbmQiLCJMYXN0TmFtZSI6Ikt1bWFyIiwiRW1haWwiOiJhcnZpbmQua3VtYXJAc3RyZWFtYW1nLmNvbSIsImlkIjoiMjAxIn0.5OnAZQ1klrI2xySkNs0t7UM07tnmaMXrhuMmkVNQHgc";
+}
+
+<h2>Register</h2>
+
+<div id="pagemsgblock" class="row" style="display: none">
+    <div class="col-md-12">
+        <div class="alert alert-danger" role="alert">
+            <p id="pagemsg"></p>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div id="subscriptionscontainer" class="col-md-12">
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        console.log('jwttoken: ' + '@jwtToken');
+
+        if (typeof streamPayments != "undefined") {
+
+            streamPayments.init({
+                "jwtToken": "@awsJwtToken",
+                "language": "en"
+            });
+
+            /// Grab the package listing
+            streamPayments.getSubscriptionPackageList(
+                null,
+                function (data) {
+                    $("#pagemsgblock").css("display", "none");
+                    var html = '<div class=\"row\">';
+                    for (i = 0; i < data.SubscriptionPlanOptions.length; i++) {
+                        html += '<div class=\"col-md-4\">';
+                        html += '<div class=\"package\">';
+                        html += '<p>' + data.SubscriptionPlanOptions[i].AmountFormatted + '</p>';
+                        html += '<h4>' + data.SubscriptionPlanOptions[i].Title + '</h3>';
+                        html += '<a href="' + data.SubscriptionPlanOptions[i].PurchaseUrl + '" class="btn btn-warning">Buy Now+</a>';
+                        html += '</div>';
+                        html += '</div>';
+
+                        console.log("Subscription name :" + data.SubscriptionPlanOptions[i].Title);
+                        console.log("            price :" + data.SubscriptionPlanOptions[i].AmountFormatted);
+                        console.log("              url :" + data.SubscriptionPlanOptions[i].PurchaseUrl);
+                    }
+                    html += '</div>';
+                    $('#subscriptionscontainer').append(html);
+                }
+            );
+        }
+        else {
+            $("#pagemsgblock").css("display", "block");
+            $('#pagemsg').html("Can not find streamPayments object.Server application not loaded");
+        }
+    });
+
+
+</script>

@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Payments Api Client Application</h2>
+
+<a href="/register" class="btn btn-primary btn-lg">Register</a>
+
+@*<h2>Payments Client Application</h2>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            @Html.LabelFor(m => m.EmailAddress)
+            <input class="form-control" id="EmailAddress" name="EmailAddress" type="email" value="" placeholder="Email Address">
+            @Html.ValidationMessageFor(m => m.EmailAddress)
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-left">
+            <input type="submit" class="btn btn-primary" id="loginsubmit" />
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+
+    console.log("document loaded");
+    streamPayments.init(
+        {
+        "jwtToken": "",
+        "language": "en"
+        }
+    );
+
+    $("#loginsubmit").click(function () {
+        var emailaddress = $("#EmailAddress").val();
+        var password = $("#Password").val();
+
+        console.log("emailaddress:"+emailaddress);
+        console.log("password:"+password);
+
+        var options = {
+            "emailaddress": emailaddress,
+            "password": password
+        };
+
+        streamPayments.doLogin(options, loginCallback);
+
+        function loginCallback (data) {
+            console.log('login call back');
+            console.log(JSON.stringify(data));
+        };
+
+        var loginCallback2=function (data) {
+            console.log('login call back');
+            console.log(JSON.stringify(data));
+        };
+    });
+});
+
+
+</script>*@

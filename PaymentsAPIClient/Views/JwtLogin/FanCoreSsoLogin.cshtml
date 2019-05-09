@@ -1,0 +1,42 @@
+﻿@model PaymentsAPIClient.Models.SsoLoginViewModel
+
+
+@{
+    ViewBag.Title = "Login";
+    var returnUrl = Request.QueryString["returnurl"];
+    var defaultJwtToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1MjU3Njk1NTYsImV4cCI6MTU1OTk4Mzk1NiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDozNTg4Iiwic3ViIjoiaHR0cDovL2xvY2FsaG9zdDo1MDM3NiIsImlkIjoiMTAxIiwiZmlyc3RuYW1lIjoiQXJ2aW5kIiwibGFzdG5hbWUiOiJLdW1hciIsImVtYWlsIjoiYXJ2aW5kLmt1bWFyQHN0cmVhbWFtZy5jb20ifQ.nrm5MeNlSSDV9Ki1jcV5ZCl9kmdNuys3SzqJCoZzHyk";
+}
+
+<h2>Payments Client Application</h2>
+<div class="samplearea">
+    <label>sample Jwt Token:</label>
+    <label class="text-muted"><small>@defaultJwtToken</small></label>
+</div>
+@if (Model.Status == "success")
+{
+    <div class="alert alert-success" role="alert">
+        <p>Login Successful.</p>
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="section">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.JwtToken, htmlAttributes: new { @class = "col-form-label" })
+                            @Html.EditorFor(m => m.JwtToken, new { htmlAttributes = new { @class = "form-control", @rows = 5, placeholder = "jwt token" } })
+                            @Html.ValidationMessageFor(m => m.JwtToken)
+                        </div>
+
+                        <button type="submit" class="btn btn-lg btn-primary" id="loginsubmit">login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

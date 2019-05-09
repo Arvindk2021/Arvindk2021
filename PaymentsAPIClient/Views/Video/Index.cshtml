@@ -1,0 +1,30 @@
+﻿@model PaymentsAPIClient.Models.VideoListViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Videos</h2>
+
+<div class="row">
+    @if (Model != null && Model.Videos != null && Model.Videos.Count > 0)
+    {
+        foreach (var item in @Model.Videos)
+        {
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img class="img-responsive" />
+                    </div>
+                    <div class="col-md-12">
+                        <h3> @item.Title</h3>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <a href="http://localhost:50376/video/0_ukdklata" class="btn btn-primary" >Play 0_ukdklata</a>
+    }
+</div>

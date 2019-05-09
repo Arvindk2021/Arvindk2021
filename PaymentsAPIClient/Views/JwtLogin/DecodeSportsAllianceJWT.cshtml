@@ -1,0 +1,61 @@
+﻿@model PaymentsAPIClient.Models.DecodeJwtViewModel
+
+@{
+    ViewBag.Title = "DecodeSportsAllianceJWT";
+}
+
+<h2>DecodeSportsAllianceJWT</h2>
+
+@using (Html.BeginForm())
+{
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            @Html.LabelFor(m => m.Message, new { @class = "control-label" })
+            <label class="text-danger">@Model.Message</label>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.TokenType, new { @class = "control-label" })
+            @Html.EnumDropDownListFor(m => m.TokenType, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.SecretKeys, new { @class = "control-label" })
+            @Html.TextBoxFor(m => m.SecretKeys, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.SecretKeys)
+
+            @*@Html.LabelFor(m => m.SecretKeys, htmlAttributes: new { @class = "col-form-label" })
+            @Html.EditorFor(m => m.SecretKeys, new { htmlAttributes = new { @class = "form-control", @rows = 5, placeholder = "jwt token" } })
+            @Html.ValidationMessageFor(m => m.SecretKeys)*@
+
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.InputJwtToken, new { @class = "control-label" })
+            @Html.TextAreaFor(m => m.InputJwtToken, new { @class = "form-control", rows = 7 })
+            @Html.ValidationMessageFor(m => m.InputJwtToken)
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.StandardToken, new { @class = "control-label" })
+            @Html.DisplayFor(m => m.StandardToken, new { @class = "form-control", rows = 5 })
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Claims, new { @class = "control-label" })
+            @Html.DisplayFor(m => m.Claims, new { @class = "form-control", rows = 5 })
+        </div>
+        <hr />
+
+        <button type="submit" class="btn btn-primary">Decode</button>
+
+    </div>
+</div>
+}
