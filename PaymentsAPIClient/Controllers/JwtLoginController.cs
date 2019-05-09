@@ -93,7 +93,7 @@ namespace PaymentsAPIClient.Controllers
 
             //Base64 encoded url. Also replace / with $ and = with ~
             var base64Encoded = Convert.ToBase64String(Encoding.UTF8.GetBytes("returnurl:" + url)).Replace("/", "$").Replace("=", "~");
-            var token = model.JwtToken;
+            var token = model.JwtToken.Trim();
             var resolvedUrl = ssoUrl + base64Encoded + "/?lang=en&token=" + token;
             //working sercret key for above token: YTNOaGJXYzRNams9
             return Redirect(resolvedUrl);
