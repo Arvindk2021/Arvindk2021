@@ -202,3 +202,5 @@
 /.vs/PaymentsAPIClient/config/applicationhost.config
 /.vs/PaymentsAPIClient/config
 /.vs/PaymentsAPIClient
+/.vs
+/ClientCustom.UI/obj/Debug
